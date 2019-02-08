@@ -35,13 +35,17 @@ class Httpstatus extends \Controller
         return $this->render('httpstatus/add');
     }
 
-    public function edit ()
+    public function edit (int $id)
     {
-        return $this->render('httpstatus/edit');
+        return $this->render('httpstatus/edit', [
+            "id" => $id
+        ]);
     }
 
-    public function show ()
+    public function show (int $id)
     {
-        return $this->render('httpstatus/show');
+        return $this->render('httpstatus/show', [
+            "id" => $id
+        ]);
     }
 }

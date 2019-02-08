@@ -23,5 +23,5 @@ CREATE TABLE IF NOT EXISTS history_site
 (
     id_site INT(11) NOT NULL,
     update_site DATETIME NOT NULL,
-    status_site INT(11) NOT NULL,
+    status_site INT(11) NOT NULL
 );

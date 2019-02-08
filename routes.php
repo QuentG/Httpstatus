@@ -1,9 +1,12 @@
 <?php
     $routes = array(
-        'Short' => [
+        'Httpstatus' => [
             'home' => '/',
-            'minify' => '/minify/',
-            'develop' => '/r/{uid}/'
+            'login' => '/login',
+            'admin' => '/admin',
+            'add' => '/admin/add',
+            'edit' => '/admin/edit/{id}',
+            'show' => '/show/{id}'
         ]
     );
 

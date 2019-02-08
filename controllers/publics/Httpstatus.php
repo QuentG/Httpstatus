@@ -11,7 +11,7 @@ class Httpstatus extends \Controller
         $this->internal_httpstatus = new InternalHttpstatus($pdo);
     }
 
-    public function home()
+    public function home ()
     {
         $toto = 'Bernard';
 
@@ -20,4 +20,28 @@ class Httpstatus extends \Controller
         ]);
     }
 
+    public function login ()
+    {
+        return $this->render('httpstatus/login');
+    } 
+    
+    public function admin ()
+    {
+        return $this->render('httpstatus/admin');
+    }
+
+    public function add ()
+    {
+        return $this->render('httpstatus/add');
+    }
+
+    public function edit ()
+    {
+        return $this->render('httpstatus/edit');
+    }
+
+    public function show ()
+    {
+        return $this->render('httpstatus/show');
+    }
 }

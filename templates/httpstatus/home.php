@@ -1,5 +1,5 @@
 <?php include(PWD_TEMPLATES . '/incs/head.php'); ?>
 
-<p>OUI </p>
+<p>Home</p>
 
 <?php include(PWD_TEMPLATES . '/incs/footer.php'); ?>

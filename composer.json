@@ -1,0 +1,15 @@
+{
+    "name": "descartes/default",
+    "description": "Architecture de base d'un projet avec Descartes",
+    "require": {},
+    "license": "GNU/GPL3",
+    "authors": [
+        {
+            "name": "PlebWeb",
+            "email": "plebwebsas@gmail.com"
+        }
+    ],
+    "require-dev": {
+	    "phpunit/phpunit": "*"
+    }
+}

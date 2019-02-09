@@ -2,27 +2,29 @@
 <?php include(PWD_TEMPLATES . '/incs/header.php'); ?>
 
 <div class="container">
-    <div class="row mt-3">
+    <div class="row mt-5">
         <div class="col-md-12">
             <form id="form-login" method="POST" action="">
-                <h3>Login</h3>
-                <div class="input-group">
+                <h3>Admin</h3>
+                <div class="input-group mt-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="icon-email"></span>
+                        <span class="input-group-text" id="icon-email"><img src="./static/img/login/icon-user.png" alt="icon user"/></span>
                     </div>
-                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input id="login-email" type="email" name="email" class="form-control" placeholder="Email">
                 </div>
 
-                <div class="input-group-prepend">
+                <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="icon-password">@</span>
+                        <span class="input-group-text" id="icon-password"><img src="./static/img/login/icon-password.png" alt="icon password"/></span>
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input id="login-password" type="password" name="password" class="form-control" placeholder="Password">
                 </div>
-                
-                <button id="login-submit" type="submit" name="submit" class="btn btn-primary">Login</button>
-                
-                <div id="lost-password">
+
+                <div id="login-submit" class="mt-4">
+                    <button type="submit" name="submit" class="btn">Login</button>
+                </div>
+                        
+                <div id="lost-password" class="mt-2">
                     <a href="">lost your password ?</a>
                 </div>
             </form>

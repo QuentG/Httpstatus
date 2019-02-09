@@ -4,22 +4,27 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-12">
-            <h3>Login</h3>
-        </div>
-
-        <div class="col-md-12">
-            <form method="POST" action="">
-                <div class="form-group">
-                    <label for="email">Email</label>
+            <form id="form-login" method="POST" action="">
+                <h3>Login</h3>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon-email"></span>
+                    </div>
                     <input type="email" name="email" class="form-control" placeholder="Email">
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon-password">@</span>
+                    </div>
                     <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button id="login-submit" type="submit" name="submit" class="btn btn-primary">Login</button>
+                
+                <div id="lost-password">
+                    <a href="">lost your password ?</a>
+                </div>
             </form>
         </div>
     </div>

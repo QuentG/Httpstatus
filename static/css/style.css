@@ -1,0 +1,21 @@
+body{
+    background-color: #222;
+}
+
+/* Page Login */
+
+#form-login{
+    width: 50%;
+    margin: auto;
+}
+#form-login h3{
+    text-align: center;
+}
+
+#login-submit{
+    width: 100%;
+}
+
+#lost-password{
+    text-align: center;
+}

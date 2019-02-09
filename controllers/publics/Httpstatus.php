@@ -22,7 +22,25 @@ class Httpstatus extends \Controller
 
     public function login ()
     {
-        return $this->render('httpstatus/login');
+        $email = $_POST['email'] ?? false;
+        $pwd = $_POST['password'] ?? false;
+
+        if (!$email || !$pwd)
+        {
+            return $this->render('httpstatus/login');
+        }
+        else
+        {
+            $login = $this->internal_httpstatus->get_login($email, $pwd);
+
+            if (!$login)
+            {
+                return $this->render('httpstatus/login');
+            }
+            else{
+                header("Location: ./admin");
+            }
+        }
     } 
     
     public function admin ()

@@ -27,25 +27,45 @@ class Httpstatus extends \Controller
 
         if (!$email || !$pwd)
         {
-            return $this->render('httpstatus/login');
+            return $this->render('httpstatus/login', [
+                "success" => true
+            ]);
         }
         else
         {
-            $login = $this->internal_httpstatus->get_login($email, $pwd);
+            $admin = $this->internal_httpstatus->get_login($email, $pwd);
 
-            if (!$login)
+            if (!$admin)
             {
-                return $this->render('httpstatus/login');
+                return $this->render('httpstatus/login', [
+                    "success" => false
+                ]);
             }
-            else{
-                header("Location: ./admin");
+            else
+            {
+                session_start();
+                $_SESSION['admin'] = $admin;
+                header('location: ./admin');
             }
         }
     } 
     
     public function admin ()
     {
-        return $this->render('httpstatus/admin');
+        if($_GET['deconnexion']){
+            session_destroy();
+            header('Location: ./login');
+        }
+        elseif($_SESSION['admin'])
+        {
+            return $this->render('httpstatus/admin', [
+                "admin" => $_SESSION['admin']
+            ]);
+        }
+        else
+        {
+            header('Location: ./login');
+        }
     }
 
     public function add ()

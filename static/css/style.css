@@ -52,9 +52,18 @@ body{
     border-color: transparent;
     box-shadow: none;
 }
+#login-error{
+    width: 70%;
+    color: rgb(248, 109, 109);
+    margin: auto;
+    text-align: center;
+}
+#login-error p{
+    margin-bottom: 0;
+}
 #login-submit{
     width: 60%;
-    margin: auto;
+    margin:0 auto;
 }
 #login-submit button{
     width: 100%;

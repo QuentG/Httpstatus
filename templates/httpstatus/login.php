@@ -20,11 +20,19 @@
                     <input id="login-password" type="password" name="password" class="form-control" placeholder="Password">
                 </div>
 
-                <div id="login-submit" class="mt-4">
+                <div id="login-submit" class="mt-4 mb-2">
                     <button type="submit" name="submit" class="btn">Login</button>
                 </div>
+
+                <?php
+                    if(!$success){
+                ?>
+                    <div id="login-error" class="mt-2">
+                        <p>Email ou mot de passe incorrect</p>
+                    </div>
+                <?php }?>
                         
-                <div id="lost-password" class="mt-2">
+                <div id="lost-password">
                     <a href="">lost your password ?</a>
                 </div>
             </form>

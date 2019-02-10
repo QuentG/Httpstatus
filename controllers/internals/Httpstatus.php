@@ -69,4 +69,16 @@ class Httpstatus extends \InternalController
         }
     }
 
+    public function getOnSite(int $id)
+    {
+        $one_site = $this->model_httpstatus->showOneSite($id);
+        return $one_site;
+    }
+
+    public function showHistoric(int $id)
+    {
+        $historic = $this->model_httpstatus->get_historic_site($id);
+        return $historic;
+    }
+
 }

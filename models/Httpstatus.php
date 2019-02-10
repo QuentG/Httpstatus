@@ -7,11 +7,10 @@ class Httpstatus extends \Model
    /**
     * Show one site
     */
-    public function showOneSite(string $url_site, int $status_site) 
+    public function showOneSite(int $id) 
     {
         return $this->get_one('list_site', [
-           'url_site' => $url_site,
-           'status_site' => $status_site
+           'id' => $id
         ]);
     }
 
@@ -61,6 +60,16 @@ class Httpstatus extends \Model
    {
       return $this->get_one('admin', [
          'email' => $email
+      ]);
+   }
+
+   /**
+    * Show historic
+    */
+   public function get_historic_site(int $id)
+   {
+      return $this->get('history_site', [
+         'id_site' => $id
       ]);
    }
 

@@ -26,9 +26,9 @@ class Httpstatus extends \InternalController
         }
     }
 
-    public function addSite(string $url_site)
+    public function addSite(string $url_site, int $status_site)
     {
-        $add = $this->model_httpstatus->addSite($url_site);
+        $add = $this->model_httpstatus->addSite($url_site, $status_site);
 
         return $add;
     }

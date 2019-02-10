@@ -13,7 +13,7 @@ class Httpstatus extends \Controller
 
     public function home ()
     {
-        $sites = $this->internal_httpstatus->getAllSites($url_site, $status_site);
+        $sites = $this->internal_httpstatus->getAllSites();
 
         return $this->render('httpstatus/home', [
             'sites' => $sites
@@ -61,8 +61,11 @@ class Httpstatus extends \Controller
         }
         elseif($_SESSION['admin'])
         {
+            $sites = $this->internal_httpstatus->getAllSites();
+
             return $this->render('httpstatus/admin', [
-                "admin" => $_SESSION['admin']
+                "admin" => $_SESSION['admin'],
+                "sites" => $sites
             ]);
         }
         else

@@ -18,33 +18,16 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><a href="https://lucasconsejo.fr">https://lucasconsejo.fr</a></td>
-                    <td>HTTP : 200</td>
-                    <td><a href="./show/1">historic</a></td>
-                    <td><a href="./admin/edit">edit</a></td>
-                    <td><a href="./admin/delete">delete</a></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                        <td><a href="http://www.quentingans.fr/">http://www.quentingans.fr/</a></td>
-                        <td>HTTP : 200</td>
-                        <td><a href="./show/2">historic</a></td>
+                <?php foreach($sites as $key => $site) { ?>
+                    <tr>
+                        <th scope="row"><?= $site['id'] ?></th>
+                        <td><a href="<?= $site['url_site'] ?>"><?= $site['url_site'] ?></a></td>
+                        <td>HTTP : <?= $site['status_site']?></td>
+                        <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
                         <td><a href="./admin/edit">edit</a></td>
                         <td><a href="./admin/delete">delete</a></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td><a href="https://axelparis.fr/">https://axelparis.fr/</a></td>
-                    <td>HTTP : 200</td>
-                    <td><a href="./show/3">historic</a></td>
-                    <td><a href="./admin/edit">edit</a></td>
-                    <td><a href="./admin/delete">delete</a></td>
                     </tr>
-                </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>  

@@ -89,7 +89,8 @@ class Httpstatus extends \Controller
         if(!$url_site){
             return $this->render('httpstatus/admin/add');
         }
-        else{
+        else
+        {
             $status_url = get_headers($url_site);
             $status = intval(substr($status_url[0], 9, -2));
     
@@ -108,9 +109,17 @@ class Httpstatus extends \Controller
 
     public function edit (int $id)
     {
-        return $this->render('httpstatus/admin/edit', [
-            "id" => $id
-        ]);
+        $update = $this->internal_httpstatus->updateSite($id);
+
+        if(!$update)
+        {
+            return $this->render('httpstatus/admin/edit', [
+                'success' => false
+            ]);
+        }
+        else {
+            
+        }
     }
 
     public function show (int $id)

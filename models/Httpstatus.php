@@ -3,7 +3,14 @@ namespace models;
 
 class Httpstatus extends \Model
 {
-   
+
+   public function getOneSiteById(int $id)
+   {
+      return $this->get_one('list_site', [
+         'id' => $id
+      ]);
+   } 
+
    /**
     * Show one site
     */
@@ -37,11 +44,16 @@ class Httpstatus extends \Model
    /**
     * Modify a site
     */
-   public function modifySite(string $url_site)
+   public function modifySite(int $id, string $url_site, int $status_site)
    {
       return $this->update('list_site', [
-         'url_site' => $url_site
-      ]);
+         'url_site' => $url_site,
+         'status_site' => $status_site
+      ],
+      [
+         'id' => $id
+      ]
+   );
    }
 
    /**

@@ -55,6 +55,29 @@ class Httpstatus extends \InternalController
 
     }
 
+    public function updateSite(int $id)
+    {
+
+        $site = $this->model_httpstatus->getOneSiteById($id);
+
+        if (!$site)
+        {
+            return null;
+        }
+        else 
+        {
+
+        $this->model_httpstatus->modifySite(
+            $site['id'],
+            $site['url_site'],
+            $site['status_site']
+        );
+
+        return $site['url_site'];
+
+        }
+    }
+
     public function deleteSite(int $id)
     {
         $delete = $this->model_httpstatus->removeSite($id);

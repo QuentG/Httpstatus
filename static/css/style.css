@@ -82,3 +82,8 @@ body{
     text-decoration: none;
     color: rgb(168, 168, 168);
 }
+
+/* Page Admin */
+#no-sites{
+    text-align: center;
+}

@@ -13,10 +13,8 @@ class Httpstatus extends \Controller
 
     public function home ()
     {
-        $toto = 'Bernard';
-
         return $this->render('httpstatus/home', [
-            'prenom' => $toto,
+            'sites' => $sites
         ]);
     }
 
@@ -71,6 +69,25 @@ class Httpstatus extends \Controller
     public function add ()
     {
         return $this->render('httpstatus/add');
+
+        $url_site = $_POST['url'] ?? false;
+
+        $sites = $this->internal_httpstatus->addSite($url_site);
+
+        if(!$sites)
+        {
+            return $this->render('httpstatus/add', [
+                'success' => false
+            ]);
+        }
+        else 
+        {
+            return $this->redner('httpstatus/home', [
+                'sites' => $sites,
+                'success' => true
+            ]);
+        }
+        
     }
 
     public function edit (int $id)

@@ -13,6 +13,8 @@ class Httpstatus extends \Controller
 
     public function home ()
     {
+        $sites = $this->internal_httpstatus->getAllSites();
+
         return $this->render('httpstatus/home', [
             'sites' => $sites
         ]);
@@ -85,8 +87,7 @@ class Httpstatus extends \Controller
         }
         else 
         {
-            return $this->redner('httpstatus/home', [
-                'sites' => $sites,
+            return $this->render('httpstatus/admin', [
                 'success' => true
             ]);
         }

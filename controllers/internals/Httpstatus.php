@@ -33,13 +33,13 @@ class Httpstatus extends \InternalController
         return $add;
     }
 
-    public function getAllSites(string $url_site, int $status_site)
+    public function getAllSites()
     {
-       $sites = $this->model_httpstatus->showAllSites($url_site, $status_site);
+       $sites = $this->model_httpstatus->showAllSites();
 
        if($sites)
        {
-           return true;
+           return $sites;
        }
        else
        {

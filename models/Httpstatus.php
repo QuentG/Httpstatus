@@ -18,12 +18,9 @@ class Httpstatus extends \Model
    /**
     * Show all sites
     */
-   public function showAllSites(string $url_site, int $status_site) 
+   public function showAllSites() 
    {
-       return $this->get('list_site', [
-          'url_site' => $url_site,
-          'status_site' => $status_site
-       ]);
+       return $this->get('list_site');
    }
 
    /**

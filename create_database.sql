@@ -27,4 +27,4 @@ CREATE TABLE IF NOT EXISTS history_site
 );
 
 
-INSERT INTO admin VALUES ('deschaussettes@yopmail.com', 'password', 'abcdefghjaimelesapis');
+INSERT INTO admin VALUES (1, 'deschaussettes@yopmail.com', 'password', 'abcdefghjaimelesapis');

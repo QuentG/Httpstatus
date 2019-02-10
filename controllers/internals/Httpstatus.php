@@ -13,10 +13,12 @@ class Httpstatus extends \InternalController
     public function get_login($email, $pwd)
     {
         $login = $this->model_httpstatus->get_admin($email, $pwd);
-        
+
         if ($login)
         {
-            return true;
+            if($login['mdp'] === $pwd){
+                return true;
+            }
         }
         else
         {

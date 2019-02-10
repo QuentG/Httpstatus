@@ -59,14 +59,11 @@ class Httpstatus extends \Model
    /**
     * Login
     */
-    public function get_admin(string $email, string $pwd) 
+   public function get_admin(string $email, string $pwd) 
    {
-      return $this->get('admin', ["email" => $email]);
-
-      /*return $this->get('admin', [
-         "email" => $email,
-         "mdp" => $pwd
-      ]);*/
+      return $this->get_one('admin', [
+         'email' => $email
+      ]);
    }
 
 }

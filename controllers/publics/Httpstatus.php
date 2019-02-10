@@ -75,15 +75,15 @@ class Httpstatus extends \Controller
     {
         return $this->render('httpstatus/add');
 
-        $url_site = $_POST['url'] ?? false;
+        $url_site = $_POST['url_site'] ?? false;
 
-        $sites = $this->internal_httpstatus->addSite($url_site);
+        $sites = $this->internal_httpstatus->add_site($url_site);
 
         if(!$sites)
         {
             return $this->render('httpstatus/add', [
                 'success' => false
-            ]);
+            ]);  
         }
         else 
         {

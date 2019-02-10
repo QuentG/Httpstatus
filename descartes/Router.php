@@ -191,7 +191,7 @@
 						$prefix_method = 'post_';
 						break;
 					case 'put' :
-						$prefix_mthod = 'put_';
+						$prefix_method = 'put_';
 						break;
 					default :
 						$prefix_method = 'get_';

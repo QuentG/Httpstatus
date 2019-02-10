@@ -25,3 +25,6 @@ CREATE TABLE IF NOT EXISTS history_site
     update_site DATETIME NOT NULL,
     status_site INT(11) NOT NULL
 );
+
+
+INSERT INTO admin VALUES ('deschaussettes@yopmail.com', 'password', 'abcdefghjaimelesapis');

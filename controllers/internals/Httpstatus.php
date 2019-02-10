@@ -39,7 +39,7 @@ class Httpstatus extends \InternalController
 
        if($sites)
        {
-           return true;
+           return $sites;
        }
        else
        {

@@ -13,7 +13,7 @@ class Httpstatus extends \Controller
 
     public function home ()
     {
-        $sites = $this->internal_httpstatus->getAllSites();
+        $sites = $this->internal_httpstatus->getAllSites($url_site, $status_site);
 
         return $this->render('httpstatus/home', [
             'sites' => $sites

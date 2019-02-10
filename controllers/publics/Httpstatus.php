@@ -13,7 +13,7 @@ class Httpstatus extends \Controller
 
     public function home ()
     {
-        $sites = $this->internal_httpstatus->getAllSites($url_site, $status_site);
+        $sites = $this->internal_httpstatus->getAllSites();
 
         return $this->render('httpstatus/home', [
             'sites' => $sites
@@ -61,8 +61,11 @@ class Httpstatus extends \Controller
         }
         elseif($_SESSION['admin'])
         {
+            $sites = $this->internal_httpstatus->getAllSites();
+
             return $this->render('httpstatus/admin', [
-                "admin" => $_SESSION['admin']
+                "admin" => $_SESSION['admin'],
+                "sites" => $sites
             ]);
         }
         else
@@ -73,25 +76,26 @@ class Httpstatus extends \Controller
 
     public function add ()
     {
-        return $this->render('httpstatus/add');
-
         $url_site = $_POST['url_site'] ?? false;
 
-        $sites = $this->internal_httpstatus->add_site($url_site);
-
-        if(!$sites)
-        {
-            return $this->render('httpstatus/add', [
-                'success' => false
-            ]);  
+        if(!$url_site){
+            return $this->render('httpstatus/add');
         }
-        else 
-        {
-            return $this->render('httpstatus/admin', [
-                'success' => true
-            ]);
-        }
-        
+        else{
+            $status_url = get_headers($url_site);
+            $status = intval(substr($status_url[0], 9, -2));
+    
+            $sites = $this->internal_httpstatus->addSite($url_site, $status);
+    
+            if(!$sites)
+            {
+                return $this->render('httpstatus/add');
+            }
+            else 
+            {
+                header('Location: ../admin');
+            }
+        }        
     }
 
     public function edit (int $id)

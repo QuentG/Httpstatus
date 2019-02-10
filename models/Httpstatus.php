@@ -26,10 +26,11 @@ class Httpstatus extends \Model
    /**
     * Add a site
     */
-   public function addSite(string $url_site)
+   public function addSite(string $url_site, int $status_site)
    {
       return $this->insert('list_site', [
-         'url_site' => $url_site
+         'url_site' => $url_site,
+         'status_site' => $status_site
       ]);
    }
 

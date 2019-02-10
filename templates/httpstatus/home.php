@@ -11,8 +11,6 @@
                     <th scope="col">url</th>
                     <th scope="col">status</th>
                     <th scope="col">historic</th>
-                    <th scope="col">edit</th>
-                    <th scope="col">delete</th>
                 </tr>
             </thead>
 
@@ -22,9 +20,7 @@
                         <th scope="row"><?= $site['id'] ?></th>
                         <td><a href="<?= $site['url_site'] ?>"><?= $site['url_site'] ?></a></td>
                         <td>HTTP : <?= $site['status_site']?></td>
-                        <td><a href="./show/<?= $site['id'] ?>">historic</a></td>
-                        <td><a href="./admin/edit">edit</a></td>
-                        <td><a href="./admin/delete">delete</a></td>
+                        <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

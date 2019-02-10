@@ -124,8 +124,13 @@ class Httpstatus extends \Controller
 
     public function show (int $id)
     {
+        $historic = $this->internal_httpstatus->showHistoric($id);
+        $site_name = $this->internal_httpstatus->getOnSite($id);
+
         return $this->render('httpstatus/show', [
-            "id" => $id
+            "id" => $id,
+            'site_name' => $site_name,
+            'historic' => $historic
         ]);
     }
 }

@@ -8,12 +8,12 @@
         <table class="table mt-2">
             <thead>
                 <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">url</th>
-                    <th scope="col">status</th>
-                    <th scope="col">historic</th>
-                    <th scope="col">edit</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Historic</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
 
@@ -24,8 +24,8 @@
                         <td><a href="<?= $site['url_site'] ?>"><?= $site['url_site'] ?></a></td>
                         <td>HTTP : <?= $site['status_site']?></td>
                         <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
-                        <td><a href="./admin/edit">edit</a></td>
-                        <td><a href="./admin/delete">delete</a></td>
+                        <td><a href="./admin/edit">Edit</a></td>
+                        <td><a href="./admin/delete">Delete</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

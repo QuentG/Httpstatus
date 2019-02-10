@@ -7,10 +7,10 @@
         <table class="table mt-2">
             <thead>
                 <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">url</th>
-                    <th scope="col">status</th>
-                    <th scope="col">historic</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Historic</th>
                 </tr>
             </thead>
 
@@ -18,7 +18,7 @@
                 <?php foreach($sites as $key => $site) { ?>
                     <tr>
                         <th scope="row"><?= $site['id'] ?></th>
-                        <td><a href="<?= $site['url_site'] ?>"><?= $site['url_site'] ?></a></td>
+                        <td><a href="<?= $site['url_site'] ?>" target="_blank"><?= $site['url_site'] ?></a></td>
                         <td>HTTP : <?= $site['status_site']?></td>
                         <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
                     </tr>

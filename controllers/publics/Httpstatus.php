@@ -63,7 +63,7 @@ class Httpstatus extends \Controller
         {
             $sites = $this->internal_httpstatus->getAllSites();
 
-            return $this->render('httpstatus/admin', [
+            return $this->render('httpstatus/admin/admin', [
                 "admin" => $_SESSION['admin'],
                 "sites" => $sites
             ]);
@@ -79,7 +79,7 @@ class Httpstatus extends \Controller
         $url_site = $_POST['url_site'] ?? false;
 
         if(!$url_site){
-            return $this->render('httpstatus/add');
+            return $this->render('httpstatus/admin/add');
         }
         else{
             $status_url = get_headers($url_site);
@@ -89,7 +89,7 @@ class Httpstatus extends \Controller
     
             if(!$sites)
             {
-                return $this->render('httpstatus/add');
+                return $this->render('httpstatus/admin/add');
             }
             else 
             {
@@ -100,7 +100,7 @@ class Httpstatus extends \Controller
 
     public function edit (int $id)
     {
-        return $this->render('httpstatus/edit', [
+        return $this->render('httpstatus/admin/edit', [
             "id" => $id
         ]);
     }

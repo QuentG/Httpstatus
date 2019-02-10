@@ -25,7 +25,7 @@
                         <td>HTTP : <?= $site['status_site']?></td>
                         <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
                         <td><a href="./admin/edit">Edit</a></td>
-                        <td><a href="./admin/delete">Delete</a></td>
+                        <td><a href="./admin?delete=<?= $site['id'] ?>">Delete</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

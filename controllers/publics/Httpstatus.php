@@ -55,9 +55,17 @@ class Httpstatus extends \Controller
     
     public function admin ()
     {
-        if($_GET['deconnexion']){
+        if($_GET['deconnexion'])
+        {
             session_destroy();
             header('Location: ./login');
+        }
+        elseif($_GET['delete'])
+        {
+            $id = $_GET['delete'];
+            $delete = $this->internal_httpstatus->deleteSite($id);
+
+            header('Location: ./admin');
         }
         elseif($_SESSION['admin'])
         {

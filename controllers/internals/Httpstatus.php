@@ -55,4 +55,18 @@ class Httpstatus extends \InternalController
 
     }
 
+    public function deleteSite(int $id)
+    {
+        $delete = $this->model_httpstatus->removeSite($id);
+
+        if($delete)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

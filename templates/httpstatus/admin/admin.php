@@ -21,7 +21,7 @@
                 <?php foreach($sites as $key => $site) { ?>
                     <tr>
                         <th scope="row"><?= $site['id'] ?></th>
-                        <td><a href="<?= $site['url_site'] ?>"><?= $site['url_site'] ?></a></td>
+                        <td><a href="<?= $site['url_site'] ?>" target="_blank"><?= $site['url_site'] ?></a></td>
                         <td>HTTP : <?= $site['status_site']?></td>
                         <td><a href="./show/<?= $site['id'] ?>">See the history</a></td>
                         <td><a href="./admin/edit">Edit</a></td>

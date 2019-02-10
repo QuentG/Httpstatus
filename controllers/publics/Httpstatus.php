@@ -25,7 +25,10 @@ class Httpstatus extends \Controller
         $email = $_POST['email'] ?? false;
         $pwd = $_POST['password'] ?? false;
 
-        if (!$email || !$pwd)
+        if($_SESSION['admin']){
+            header('Location: ./admin');
+        }
+        elseif (!$email || !$pwd)
         {
             return $this->render('httpstatus/login', [
                 "success" => true

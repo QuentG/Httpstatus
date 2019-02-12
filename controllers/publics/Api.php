@@ -42,15 +42,32 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            return $this->render('api/add', [
-                'success' => 'true'
-            ]);
+
+            $add = $this->model_api->create(htmlspecialchars($_POST['url_site']));
+            // descartes/model/last_id()
+            $id = $this->model_api->last_id();
+
+            if($add === true && !$id === null || empty($id))
+            {
+                return $this->controller_api->json(array(
+                    'success' => true,
+                    'id' => $id
+                ));
+            }
+            else
+            {
+                return $this->controller_api->json(array(
+                    'success' => false
+                ));
+            }
+
         }
         else
         {
-            return $this->render('api/add', [
-                'success' => 'false'
-            ]);
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
         }
     }
 

@@ -13,4 +13,12 @@ class Api extends \Model
    {
       return $this->get('list_site');
    }
+
+   public function create_site(string $url_site)
+   {
+      return $this->insert('list_site', [
+         'url_site' => $url_site,
+      ]);
+   }
+
 }

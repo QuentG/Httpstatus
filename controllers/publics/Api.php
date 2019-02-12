@@ -1,0 +1,132 @@
+<?php
+namespace controllers\publics;
+
+use \controllers\internals\Api as InternalApi;
+use \ApiController as ApiController;
+
+class Api extends \Controller
+{
+    public function __construct (\PDO $pdo)
+    {
+        parent::__construct($pdo);
+        $this->internal_api = new InternalApi($pdo);
+        $this->controller_api = new ApiController($pdo);
+    }
+
+    public function home ()
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            return $this->controller_api->json(array(
+                'version' => 1,
+                'list' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/list/'
+
+            ));
+        }
+        else
+        {
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
+        }
+    }
+
+    public function add ()
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            return $this->render('api/add', [
+                'success' => 'true'
+            ]);
+        }
+        else
+        {
+            return $this->render('api/add', [
+                'success' => 'false'
+            ]);
+        }
+    }
+
+    public function list ()
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            $sites = $this->internal_api->getSites();
+
+            $websites = array();
+
+            foreach($sites as $key => $site){
+                $array_site = [
+                    'id' => $site['id'],
+                    'url' => $site['url_site'],
+                    'delete' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/delete/'.$site['id'],
+                    'status' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/status/'.$site['id'],
+                    'history' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/history/'.$site['id']
+                ];
+                array_push($websites, $array_site);
+            }
+
+            return $this->controller_api->json(array(
+                'version' => 1,
+                'websites' => $websites
+
+            ));
+        }
+        else
+        {
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
+        }
+    }
+
+    public function status ($id)
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            return $this->render('api/status', [
+                'success' => 'true',
+                'api' => $api_key
+            ]);
+        }
+        else
+        {
+            return $this->render('api/status', [
+                'success' => 'false'
+            ]);
+        }
+    }
+
+    public function delete ($id)
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            return $this->render('api/delete', [
+                'success' => 'true'
+            ]);
+        }
+        else
+        {
+            return $this->render('api/delete', [
+                'success' => 'false'
+            ]);
+        }
+    }
+}

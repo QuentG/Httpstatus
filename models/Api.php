@@ -21,10 +21,11 @@ class Api extends \Model
       ]);
    }
 
-   public function create_site(string $url_site)
+   public function create_site(string $url_site, int $status)
    {
       return $this->insert('list_site', [
          'url_site' => $url_site,
+         'status_site' => $status
       ]);
    }
 }

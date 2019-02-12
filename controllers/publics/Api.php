@@ -3,6 +3,7 @@ namespace controllers\publics;
 
 use \controllers\internals\Api as InternalApi;
 use \ApiController as ApiController;
+use \Model as Model;
 
 class Api extends \Controller
 {
@@ -11,6 +12,7 @@ class Api extends \Controller
         parent::__construct($pdo);
         $this->internal_api = new InternalApi($pdo);
         $this->controller_api = new ApiController($pdo);
+        $this->model_api = new Model($pdo);
     }
 
     public function home ()
@@ -42,12 +44,16 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
+            $url_site = htmlspecialchars($_POST['url_site']);
+            $status_url = get_headers($url_site);
+            $status = intval(substr($status_url[0], 9, -2));
 
-            $add = $this->model_api->addSite(htmlspecialchars($_POST['url_site']));
+            $add = $this->internal_api->addSite($url_site, $status);
+            
             // descartes/model/last_id()
             $id = $this->model_api->last_id();
 
-            if($add === true && !$id === null || empty($id))
+            if($add)
             {
                 return $this->controller_api->json(array(
                     'success' => true,

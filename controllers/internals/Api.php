@@ -66,7 +66,7 @@ class Api extends \InternalController
 
         if($site)
         {
-            return $site;
+            return true;
         }
         else
         {

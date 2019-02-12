@@ -111,21 +111,23 @@ class Httpstatus extends \Controller
     {
         $update = $this->internal_httpstatus->updateSite($id);
 
-        if(!$update)
+        if($update)
         {
             return $this->render('httpstatus/admin/edit', [
-                'success' => false
+                'id' => $id,
             ]);
         }
-        else {
-            
+        else 
+        {
+            header('Location: ../admin');
         }
+        
     }
 
     public function show (int $id)
     {
         $historic = $this->internal_httpstatus->showHistoric($id);
-        $site_name = $this->internal_httpstatus->getOnSite($id);
+        $site_name = $this->internal_httpstatus->getOneSite($id);
 
         return $this->render('httpstatus/show', [
             "id" => $id,

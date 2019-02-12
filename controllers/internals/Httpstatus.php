@@ -64,8 +64,6 @@ class Httpstatus extends \InternalController
         {
             return null;
         }
-        else 
-        {
 
         $this->model_httpstatus->modifySite(
             $site['id'],
@@ -75,7 +73,6 @@ class Httpstatus extends \InternalController
 
         return $site['url_site'];
 
-        }
     }
 
     public function deleteSite(int $id)
@@ -92,7 +89,7 @@ class Httpstatus extends \InternalController
         }
     }
 
-    public function getOnSite(int $id)
+    public function getOneSite(int $id)
     {
         $one_site = $this->model_httpstatus->showOneSite($id);
         return $one_site;

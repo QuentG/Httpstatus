@@ -61,15 +61,33 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            return $this->render('api/list', [
-                'success' => 'true'
-            ]);
+            $sites = $this->internal_api->getSites();
+
+            $websites = array();
+
+            foreach($sites as $key => $site){
+                $array_site = [
+                    'id' => $site['id'],
+                    'url' => $site['url_site'],
+                    'delete' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/delete/'.$site['id'],
+                    'status' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/status/'.$site['id'],
+                    'history' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/history/'.$site['id']
+                ];
+                array_push($websites, $array_site);
+            }
+
+            return $this->controller_api->json(array(
+                'version' => 1,
+                'websites' => $websites
+
+            ));
         }
         else
         {
-            return $this->render('api/list', [
-                'success' => 'false'
-            ]);
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
         }
     }
 

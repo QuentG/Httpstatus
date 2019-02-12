@@ -24,4 +24,18 @@ class Api extends \InternalController
         }
     }
 
+    public function getSites()
+    {
+        $sites = $this->model_api->get_all_sites();
+
+        if($sites)
+        {
+            return $sites;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

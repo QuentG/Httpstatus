@@ -46,6 +46,20 @@ class Api extends \InternalController
         }
     }
 
+    public function getOneSite(int $id)
+    {
+        $site = $this->model_api->get_one_site($id);
+
+        if($site)
+        {
+            return $site;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public function addSite(string $url_site, int $status_site)
     {
         $site = $this->model_api->create_site($url_site, $status_site);
@@ -59,7 +73,6 @@ class Api extends \InternalController
             return false;
         }
     }
-
     /**
      * Delete a site 
      */

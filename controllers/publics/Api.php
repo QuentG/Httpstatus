@@ -43,7 +43,7 @@ class Api extends \Controller
         if($api_key == $api_key_user)
         {
 
-            $add = $this->model_api->create(htmlspecialchars($_POST['url_site']));
+            $add = $this->model_api->addSite(htmlspecialchars($_POST['url_site']));
             // descartes/model/last_id()
             $id = $this->model_api->last_id();
 
@@ -115,16 +115,29 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            return $this->render('api/status', [
-                'success' => true,
-                'api' => $api_key
-            ]);
+            $status = $this->internal_api->getOneSite($id);
+
+            if($status['id'] == $id)
+            {
+                return $this->controller_api->json(array(
+                    'id' => $id,
+                    'status' => $status['status_site']
+                ));
+            }
+            else
+            {
+                return $this->controller_api->json(array(
+                    'success' => false,
+                    'id' => 'ID not valid'
+                ));
+            }
         }
         else
         {
-            return $this->render('api/status', [
-                'success' => false
-            ]);
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
         }
     }
 

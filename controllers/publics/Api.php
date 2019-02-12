@@ -2,6 +2,7 @@
 namespace controllers\publics;
 
 use \controllers\internals\Api as InternalApi;
+use \ApiController as ApiController;
 
 class Api extends \Controller
 {
@@ -9,6 +10,7 @@ class Api extends \Controller
     {
         parent::__construct($pdo);
         $this->internal_api = new InternalApi($pdo);
+        $this->controller_api = new ApiController($pdo);
     }
 
     public function home ()
@@ -18,15 +20,18 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            return $this->render('api/home', [
-                'success' => 'true'
-            ]);
+            return $this->controller_api->json(array(
+                'version' => 1,
+                'list' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/list/'
+
+            ));
         }
         else
         {
-            return $this->render('api/home', [
-                'success' => 'false'
-            ]);
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
         }
     }
 

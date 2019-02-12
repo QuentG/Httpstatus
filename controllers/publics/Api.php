@@ -118,7 +118,7 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            $deleteSite = $this->internal_api->delete($id);
+            $deleteSite = $this->internal_api->deleteSite($id);
             
             if($deleteSite)
             {

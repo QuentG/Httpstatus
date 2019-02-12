@@ -11,7 +11,10 @@ class Api extends \InternalController
         $this->model_api = new ModelApi($pdo);
         $this->model_httpstatus = new ModelHttpstatus($pdo);
     }
-
+    
+    /**
+     * Get the api_key
+     */
     public function apiKey()
     {
         $api_key = $this->model_api->get_api_key();
@@ -26,6 +29,9 @@ class Api extends \InternalController
         }
     }
 
+    /**
+     * Get all sites
+     */
     public function getSites()
     {
         $sites = $this->model_api->get_all_sites();
@@ -40,6 +46,9 @@ class Api extends \InternalController
         }
     }
 
+    /**
+     * Delete a site 
+     */
     public function deleteSite(int $id)
     {
         $delete = $this->model_httpstatus->removeSite($id);

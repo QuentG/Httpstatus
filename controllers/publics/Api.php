@@ -99,34 +99,48 @@ class Api extends \Controller
         if($api_key == $api_key_user)
         {
             return $this->render('api/status', [
-                'success' => 'true',
+                'success' => true,
                 'api' => $api_key
             ]);
         }
         else
         {
             return $this->render('api/status', [
-                'success' => 'false'
+                'success' => false
             ]);
         }
     }
 
-    public function delete ($id)
+    public function delete (int $id)
     {
         $api_key_user = $_GET['api_key'] ?? false;
         $api_key = $this->internal_api->apiKey();
 
         if($api_key == $api_key_user)
         {
-            return $this->render('api/delete', [
-                'success' => 'true'
-            ]);
+            $deleteSite = $this->internal_api->delete($id);
+            
+            if($deleteSite)
+            {
+                return $this->controller_api->json(array(
+                    'success' => true,
+                    'id' => $id
+                ));
+            }
+            else
+            {
+                return $this->controller_api->json(array(
+                    'success' => false,
+                    'id' => 'ID not valid'
+                ));
+            }
         }
         else
         {
-            return $this->render('api/delete', [
-                'success' => 'false'
-            ]);
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not Valid'
+            ));
         }
     }
 }

@@ -126,20 +126,26 @@ class Api extends \Controller
         }
     }
 
-    public function status ($id)
+    public function status (int $id, string $url_site)
     {
         $api_key_user = $_GET['api_key'] ?? false;
         $api_key = $this->internal_api->apiKey();
 
         if($api_key == $api_key_user)
         {
-            $status = $this->internal_api->getOneSite($id);
+            $status = $this->internal_api->getSiteByIdAndUrl($id, $url_site);
+            $time = $this->internal_api->getOneHistory($id);
 
             if($status['id'] == $id)
             {
+
                 return $this->controller_api->json(array(
                     'id' => $id,
-                    'status' => $status['status_site']
+                    'url' => $url_site,
+                    'status' => [
+                        'code' => $status['status_site'],
+                        'at' => $time['update_site']
+                    ]
                 ));
             }
             else

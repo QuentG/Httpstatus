@@ -46,9 +46,23 @@ class Api extends \InternalController
         }
     }
 
-    public function getOneSite(int $id)
+    public function getOneSite(int $id, stirng $url_site)
     {
-        $site = $this->model_api->get_one_site($id);
+        $site = $this->model_api->get_one_site($id, $url_site);
+
+        if($site)
+        {
+            return $site;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getSiteByIdAndUrl(int $id, stirng $url_site)
+    {
+        $site = $this->model_api->get_site_by_id_url($id, $url_site);
 
         if($site)
         {

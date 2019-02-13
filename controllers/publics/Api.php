@@ -159,6 +159,48 @@ class Api extends \Controller
         }
     }
 
+    public function history ($id)
+    {
+        $api_key_user = $_GET['api_key'] ?? false;
+        $api_key = $this->internal_api->apiKey();
+
+        if($api_key == $api_key_user)
+        {
+            $site = $this->internal_api->getOneSite($id);
+            $history = $this->internal_api->getOneHistory($id);
+
+            if($site['id'] == $id)
+            {
+                $array_history = array();
+                foreach ($history as $key => $hist) {
+                    array_push($array_history, [
+                        'code' => $hist['status_site'],
+                        'at' => $hist['update_site']
+                    ]);
+                }
+                return $this->controller_api->json(array(
+                    'id' => $id,
+                    'url' =>$site['url_site'],
+                    'status' => $array_history
+                ));
+            }
+            else
+            {
+                return $this->controller_api->json(array(
+                    'success' => false,
+                    'id' => 'ID not valid'
+                ));
+            }
+        }
+        else
+        {
+            return $this->controller_api->json(array(
+                'success' => false,
+                'api_key' => 'Not valid'
+            ));
+        }
+    }
+
     public function delete (int $id)
     {
         $api_key_user = $_GET['api_key'] ?? false;

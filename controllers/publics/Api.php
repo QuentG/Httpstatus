@@ -46,11 +46,11 @@ class Api extends \Controller
 
         if($api_key == $api_key_user)
         {
-            if(!isset($url_site) && empty($url_site))
+            if(!isset($url_site) || empty($url_site))
             {
                 return $this->controller_api->json(array(
                     'success' => false,
-                    'error' => 'Choose method POST'
+                    'error' => 'Choose method POST or insert values'
                 ));
             }
             else 

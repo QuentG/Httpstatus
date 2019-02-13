@@ -24,7 +24,7 @@ class Api extends \Model
    {
       return $this->get('history_site', [
          'id_site' => $id
-      ]);
+      ], 'update_site', true);
    }
 
    public function create_site(string $url_site, int $status)

@@ -4,22 +4,15 @@ namespace models;
 class Httpstatus extends \Model
 {
 
-   public function getOneSiteById(int $id)
-   {
-      return $this->get_one('list_site', [
-         'id' => $id
-      ]);
-   } 
-
    /**
     * Show one site
     */
-    public function showOneSite(int $id) 
+    public function getOneSiteById(int $id)
     {
-        return $this->get_one('list_site', [
-           'id' => $id
-        ]);
-    }
+       return $this->get_one('list_site', [
+          'id' => $id
+       ]);
+    } 
 
    /**
     * Show all sites

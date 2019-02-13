@@ -35,6 +35,12 @@ class Api extends \Model
       ], 'update_site', true);
    }
 
+   public function get_all_history(int $id)
+   {
+      return $this->get_one('history_site', [
+         'id_site' => $id
+      ], 'update_site', true);
+   }
    public function create_site(string $url_site, int $status)
    {
       return $this->insert('list_site', [

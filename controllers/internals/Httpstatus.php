@@ -91,7 +91,7 @@ class Httpstatus extends \InternalController
 
     public function getOneSite(int $id)
     {
-        $one_site = $this->model_httpstatus->showOneSite($id);
+        $one_site = $this->model_httpstatus->getOneSiteById($id);
         return $one_site;
     }
 

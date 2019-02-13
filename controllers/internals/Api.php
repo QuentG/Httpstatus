@@ -73,6 +73,19 @@ class Api extends \InternalController
             return false;
         }
     }
+    public function getOneHistory(int $id)
+    {
+        $history = $this->model_api->get_one_history($id);
+
+        if($history)
+        {
+            return $history;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public function addSite(string $url_site, int $status_site)
     {

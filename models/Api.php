@@ -28,6 +28,12 @@ class Api extends \Model
          'url_site' => $url_site
       ]);
    }
+   public function get_one_history(int $id)
+   {
+      return $this->get('history_site', [
+         'id_site' => $id
+      ]);
+   }
 
    public function create_site(string $url_site, int $status)
    {

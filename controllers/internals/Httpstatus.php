@@ -149,5 +149,14 @@ class Httpstatus extends \InternalController
         }
     }
 
+    public function sendMail(string $url_site, datetime $date)
+    {
+        $headers = array(
+            'From' => 'webmaster@httpstatus.fr',
+            'Reply-to' => 'nobody@bye.fr'
+        );
+
+        mail('deschaussettes@yopmail.com', 'Site K.O', 'Le site ' .$url_site. 'est K.O depuis '. $date .' ', $headers);
+    }
 
 }

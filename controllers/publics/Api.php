@@ -42,9 +42,18 @@ class Api extends \Controller
         $api_key_user = $_GET['api_key'] ?? false;
         $api_key = $this->internal_api->apiKey();
 
+        $url_site = htmlspecialchars($_POST['url_site']);
+
         if($api_key == $api_key_user)
         {
-            $url_site = htmlspecialchars($_POST['url_site']);
+            if(!isset($url_site) && empty($url_site))
+            {
+                return $this->controller_api->json(array(
+                    'success' => false,
+                    'error' => 'Choose method POST'
+                ));
+            }
+
             $status_url = get_headers($url_site);
             $status = intval(substr($status_url[0], 9, -2));
 
@@ -53,17 +62,18 @@ class Api extends \Controller
             // descartes/model/last_id()
             $id = $this->model_api->last_id();
 
-            if($add)
+            if($add && isset($url_site) && !empty($url_site))
             {
                 return $this->controller_api->json(array(
                     'success' => true,
-                    'id' => $id
+                    'id' => $id,
                 ));
             }
             else
             {
                 return $this->controller_api->json(array(
-                    'success' => false
+                    'success' => false,
+                    'error' => 'Do not insert in db'
                 ));
             }
 

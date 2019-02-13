@@ -111,7 +111,8 @@ class Httpstatus extends \InternalController
             $error_id = intval($site['id']);
             array_push($error_array, [
                 'id' => $error_id,
-                'error' => 0
+                'error' => 0,
+                'time' => 0
             ]);
         }
 
@@ -138,10 +139,26 @@ class Httpstatus extends \InternalController
                 {
                     $error_array[$index]['error'] = 0;
                 }
-                if( $error_array[$index]['error'] == 3)
+
+                if($error_array[$index]['error'] == 3)
                 {
-                    $time = (new \DateTime())->format('Y-m-d H:i:s');
-                    $error_array[$index]['error'] = 0;
+                    if($error_array[$index]['time'] == 0)
+                    {
+                        $error_array[$index]['time'] = (new \DateTime())->format('Y-m-d H:i:s');
+                        $error_array[$index]['error'] = 0;
+                        sendMail($site['url_site'], $error_array[$index]['time']);
+                    }
+                    else
+                    {
+                        $limit = $error_array[$index]['time']+7200;
+                        $current_time = (new \DateTime())->format('Y-m-d H:i:s');
+
+                        if($current_time >= $limit){
+                            $error_array[$index]['time'] = (new \DateTime())->format('Y-m-d H:i:s');
+                            $error_array[$index]['error'] = 0;
+                            sendMail($site['url_site'], $error_array[$index]['time']);
+                        }
+                    }
                 }
             }
 

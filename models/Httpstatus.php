@@ -85,4 +85,27 @@ class Httpstatus extends \Model
       ]);
    }
 
+   public function updateStatus(int $id, int $status)
+   {
+      return $this->update('list_site', [
+         'status_site' => $status
+         ],
+         [
+            'id' => $id
+         ]
+      );
+   }
+
+   public function updateHistoric(int $id, int $status)
+   {
+      $update = (new \DateTime())->format('Y-m-d H:i:s');
+
+      return $this->insert('history_site', [
+         'id_site' => $id,
+         'status_site' => $status,
+         'update_site' => $update
+         ]
+      );
+   }
+
 }

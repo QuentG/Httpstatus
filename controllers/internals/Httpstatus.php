@@ -101,4 +101,53 @@ class Httpstatus extends \InternalController
         return $historic;
     }
 
+    public function checkStatus()
+    {
+        $error_array = array();
+        $all_site = $this->model_httpstatus->showAllSites();
+
+        // Init le tableau d'erreur à 0
+        foreach ($all_site as $key => $site) {
+            $error_id = intval($site['id']);
+            array_push($error_array, [
+                'id' => $error_id,
+                'error' => 0
+            ]);
+        }
+
+
+        while(true){
+            sleep(1);
+
+            foreach ($all_site as $key => $site) {
+                $url = $site['url_site'];
+                $id = $site['id'];
+                $index = array_search($id, array_column($error_array, 'id')); 
+
+                $status_url = get_headers($url);
+                $status = intval(substr($status_url[0], 9, -2));
+
+                $update_status = $this->model_httpstatus->updateStatus($id, $status);
+                $update_historic = $this->model_httpstatus->updateHistoric($id, $status);
+
+                if($status !== 200)
+                {
+                    $error_array[$index]['error'] += 1;
+                }
+                else
+                {
+                    $error_array[$index]['error'] = 0;
+                }
+                if( $error_array[$index]['error'] == 3)
+                {
+                    $time = (new \DateTime())->format('Y-m-d H:i:s');
+                    $error_array[$index]['error'] = 0;
+                }
+            }
+
+            echo 'check done';
+        }
+    }
+
+
 }

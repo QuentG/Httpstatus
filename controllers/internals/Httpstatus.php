@@ -170,7 +170,8 @@ class Httpstatus extends \InternalController
     {
         $headers = array(
             'From' => 'webmaster@httpstatus.fr',
-            'Reply-to' => 'nobody@bye.fr'
+            'Reply-to' => 'nobody@bye.fr',
+            'Content-type' => 'text/plain' 
         );
 
         mail('deschaussettes@yopmail.com', 'Site K.O', 'Le site ' .$url_site. 'est K.O depuis '. $date .' ', $headers);

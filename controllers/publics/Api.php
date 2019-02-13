@@ -53,30 +53,32 @@ class Api extends \Controller
                     'error' => 'Choose method POST'
                 ));
             }
-
-            $status_url = get_headers($url_site);
-            $status = intval(substr($status_url[0], 9, -2));
-
-            $add = $this->internal_api->addSite($url_site, $status);
-            
-            // descartes/model/last_id()
-            $id = $this->model_api->last_id();
-
-            if($add && isset($url_site) && !empty($url_site))
+            else 
             {
-                return $this->controller_api->json(array(
-                    'success' => true,
-                    'id' => $id,
-                ));
-            }
-            else
-            {
-                return $this->controller_api->json(array(
-                    'success' => false,
-                    'error' => 'Do not insert in db'
-                ));
-            }
 
+                $status_url = get_headers($url_site);
+                $status = intval(substr($status_url[0], 9, -2));
+
+                $add = $this->internal_api->addSite($url_site, $status);
+                
+                // descartes/model/last_id()
+                $id = $this->model_api->last_id();
+
+                if($add && isset($url_site) && !empty($url_site))
+                {
+                    return $this->controller_api->json(array(
+                        'success' => true,
+                        'id' => $id,
+                    ));
+                }
+                else
+                {
+                    return $this->controller_api->json(array(
+                        'success' => false,
+                        'error' => 'Do not insert in db'
+                    ));
+                }
+            }
         }
         else
         {

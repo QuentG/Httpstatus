@@ -118,7 +118,7 @@ class Httpstatus extends \InternalController
 
 
         while(true){
-            sleep(10);
+            sleep(120);
 
             foreach ($all_site as $key => $site) {
                 $url = $site['url_site'];

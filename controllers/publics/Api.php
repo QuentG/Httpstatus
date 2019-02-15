@@ -137,8 +137,7 @@ class Api extends \Controller
             $time = $this->internal_api->getHistory($id);
 
             if($status['id'] == $id)
-            {
-
+            {           
                 return $this->controller_api->json(array(
                     'id' => $id,
                     'url' => $status['url_site'],

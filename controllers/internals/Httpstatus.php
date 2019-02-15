@@ -55,7 +55,7 @@ class Httpstatus extends \InternalController
 
     }
 
-    public function updateSite(int $id)
+    public function updateSite(int $id, string $url_site, int $status_site)
     {
 
         $site = $this->model_httpstatus->getOneSiteById($id);
@@ -67,11 +67,11 @@ class Httpstatus extends \InternalController
 
         $this->model_httpstatus->modifySite(
             $site['id'],
-            $site['url_site'],
-            $site['status_site']
+            $url_site,
+            $status_site
         );
 
-        return $site['url_site'];
+        return $url_site;
 
     }
 

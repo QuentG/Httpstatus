@@ -108,19 +108,36 @@ class Httpstatus extends \Controller
 
     public function edit (int $id)
     {
-        $update = $this->internal_httpstatus->updateSite($id);
+        $url_site = $_POST['url_site'] ?? false;
 
-        if($update)
+        $get_one_site = $this->internal_httpstatus->getOneSite($id);
+
+        if($url_site)
+        {
+            $status_url = get_headers($url_site);
+            $status = intval(substr($status_url[0], 9, -2));
+
+            $update = $this->internal_httpstatus->updateSite($id, $url_site, $status);
+
+            if($update)
+            {
+                header('Location: ../../admin');
+            }
+            else
+            {
+                return $this->render('httpstatus/admin/edit', [
+                    'id' => $id,
+                    'url_site' => $url_site
+                ]);
+            }
+        } 
+        else
         {
             return $this->render('httpstatus/admin/edit', [
                 'id' => $id,
+                'url_site' => $get_one_site['url_site']
             ]);
-        }
-        else 
-        {
-            header('Location: ../admin');
-        }
-        
+        }   
     }
 
     public function show (int $id)

@@ -49,7 +49,7 @@ The site has an API that allows you to:
 
 - /api/
 
-```json
+```
 {
     'version': 1,
     'list': 'http://example.fr/httpstatus/api/list/'
@@ -58,7 +58,7 @@ The site has an API that allows you to:
 
 - /api/list
 
-```json
+```
 {
     'version': 1,
     'websites': [
@@ -76,7 +76,7 @@ The site has an API that allows you to:
 
 - /api/add
 
-```json
+```
 {
     'success': true,
     'id': 7269,
@@ -85,7 +85,7 @@ The site has an API that allows you to:
 
 - /api/status/973
 
-```json
+```
 {
     'id': 973,
     'url': 'http://toto.com',
@@ -98,7 +98,7 @@ The site has an API that allows you to:
 
 - /api/history/973
 
-```json
+```
 {
     'id': 973,
     'url': 'http://toto.com',
@@ -121,7 +121,7 @@ The site has an API that allows you to:
 
 - /api/delete/973
 
-```json
+```
 {
     'success': true,
     'id': 973,

@@ -36,6 +36,8 @@ The site has an API that allows you to:
 
 - View the history of a site
 
+***
+
 ### Different routes
 
 - Home : /api/
@@ -44,6 +46,8 @@ The site has an API that allows you to:
 - Status : /api/status/{id}
 - History : /api/history/{id}
 - Delete : /api/delete/{id}
+
+***
 
 ### Example of different requests made to the API
 
@@ -55,6 +59,8 @@ The site has an API that allows you to:
     'list': 'http://example.fr/httpstatus/api/list/'
 }
 ```
+
+***
 
 - /api/list
 
@@ -74,6 +80,8 @@ The site has an API that allows you to:
 }
 ```
 
+***
+
 - /api/add
 
 ```
@@ -82,6 +90,8 @@ The site has an API that allows you to:
     'id': 7269,
 }
 ```
+
+***
 
 - /api/status/973
 
@@ -95,6 +105,8 @@ The site has an API that allows you to:
     }
 }
 ```
+
+***
 
 - /api/history/973
 
@@ -118,6 +130,8 @@ The site has an API that allows you to:
     ]
 }
 ```
+
+***
 
 - /api/delete/973
 

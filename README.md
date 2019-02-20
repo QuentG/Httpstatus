@@ -36,15 +36,18 @@ The site has an API that allows you to:
 
 - View the history of a site
 
-***
-
 ### Different routes
 
 - Home : /api/
+
 - List : '/api/list
+
 - Add : /api/add
+
 - Status : /api/status/{id}
+
 - History : /api/history/{id}
+
 - Delete : /api/delete/{id}
 
 ***

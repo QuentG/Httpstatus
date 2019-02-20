@@ -24,7 +24,7 @@ class Api extends \Controller
         {
             return $this->controller_api->json(array(
                 'version' => 1,
-                'list' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/list/'
+                'list' => $_SERVER['SERVER_NAME'].'/httpstatus/api/list/'
 
             ));
         }
@@ -104,9 +104,9 @@ class Api extends \Controller
                 $array_site = [
                     'id' => $site['id'],
                     'url' => $site['url_site'],
-                    'delete' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/delete/'.$site['id'],
-                    'status' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/status/'.$site['id'],
-                    'history' => $_SERVER['SERVER_NAME'].'/Httpstatus/api/history/'.$site['id']
+                    'delete' => $_SERVER['SERVER_NAME'].'/httpstatus/api/delete/'.$site['id'],
+                    'status' => $_SERVER['SERVER_NAME'].'/httpstatus/api/status/'.$site['id'],
+                    'history' => $_SERVER['SERVER_NAME'].'/httpstatus/api/history/'.$site['id']
                 ];
                 array_push($websites, $array_site);
             }

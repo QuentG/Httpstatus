@@ -60,7 +60,7 @@ class Api extends \InternalController
         }
     }
 
-    public function getSiteByIdAndUrl(int $id, stirng $url_site)
+    public function getSiteByIdAndUrl(int $id, string $url_site)
     {
         $site = $this->model_api->get_site_by_id_url($id, $url_site);
 

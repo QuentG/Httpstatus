@@ -146,7 +146,7 @@ class Httpstatus extends \InternalController
                     {
                         $error_array[$index]['time'] = (new \DateTime())->format('Y-m-d H:i:s');
                         $error_array[$index]['error'] = 0;
-                        //sendMail($site['url_site'], $error_array[$index]['time']);
+                        sendMail($site['url_site'], $error_array[$index]['time']);
                     }
                     else
                     {
@@ -156,7 +156,7 @@ class Httpstatus extends \InternalController
                         if($current_time >= $limit){
                             $error_array[$index]['time'] = (new \DateTime())->format('Y-m-d H:i:s');
                             $error_array[$index]['error'] = 0;
-                            //sendMail($site['url_site'], $error_array[$index]['time']);
+                            sendMail($site['url_site'], $error_array[$index]['time']);
                         }
                     }
                 }
